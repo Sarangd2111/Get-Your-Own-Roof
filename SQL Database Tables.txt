@@ -1,0 +1,69 @@
+					Tables
+SQL> create table User_1(
+  2  ID varchar(8) primary key,
+  3  Buyer_Seller varchar(6));
+
+SQL> create table Buyer(
+  2  buyer_ID varchar(8),
+  3  foreign key (buyer_ID) references User_1 (ID),
+  4  password varchar(20) primary key,
+  5  name varchar(25),
+  6  contact number(10),
+  7  mail varchar(35));
+
+SQL> create table Seller(
+  2  ID varchar(8),
+  3  foreign key (ID) references User_1 (ID),
+  4  Password varchar(20) primary key
+  5  , name varchar(25),
+  6  contact number (10),
+  7  mail varchar(35));
+
+SQL> create table asset_1 (
+  2  ID varchar (8) primary key,
+  3  f_b_h varchar (7));
+
+SQL> create table Deal(
+  2  deal_ID varchar(8) primary key,
+  3  buyer_ID varchar(8),
+  4  foreign key (buyer_ID) references User_1 (ID),
+  5  seller_ID varchar(8),
+  6  foreign key (seller_ID) references User_1 (ID),
+  7  asset_ID varchar(8),
+  8  foreign key (asset_ID) references Asset_1 (ID),
+  9  deal_type varchar(4),
+ 10  deal_on varchar(7));
+
+
+SQL>  create table Flat(
+  2     flat_ID varchar(8),
+  3     foreign key (flat_ID) references Asset_1 (ID),
+  4     owner_ID varchar(8),
+  5     foreign key (owner_ID) references User_1 (ID),
+  6     pin number(6) primary key,
+  7     location varchar(60),
+  8     type varchar(4),
+  9     flat_on varchar(4),
+ 10   price_rent integer);
+
+SQL>  create table Bunglow(
+  2     bunglow_ID varchar(8),
+  3     foreign key (bunglow_ID) references Asset_1 (ID),
+  4     owner_ID varchar(8),
+  5     foreign key (owner_ID) references User_1 (ID),
+  6     pin number(6) primary key,
+  7     location varchar(60),
+  8     type varchar(4),
+  9     bunglow_on varchar(4),
+ 10     price_rent integer);
+
+SQL>  create table Hostel(
+  2      room_ID varchar(8),
+  3      foreign key (room_ID) references Asset_1 (ID),
+  4      owner_ID varchar(8),
+  5      foreign key (owner_ID) references User_1 (ID),
+  6      pin number(6) primary key,
+  7      location varchar(60),
+  8      seater varchar(4),
+  9      rent integer);
+
